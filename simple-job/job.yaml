@@ -1,12 +1,18 @@
-apiVersion: v1
-kind: Pod
+apiVersion: batch/v1beta1
+kind: CronJob
 metadata:
-  name: pi-pod
-  labels:
-    app: pi
+  name: hello
 spec:
-  containers:
-    - name: pi
-      image: perl:5.31
-      command: ["perl",  "-Mbignum=bpi", "-wle", "print time()"]
-  restartPolicy: Never
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            args:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure
