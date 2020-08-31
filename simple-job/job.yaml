@@ -1,9 +1,8 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: v1
+kind: Deployment
 metadata:
   name: pi
 spec:
-  ttlSecondsAfterFinished: 100
   template:
     spec:
       containers:
