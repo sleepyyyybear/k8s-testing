@@ -8,5 +8,5 @@ spec:
   containers:
     - name: pi
       image: perl:5.32
-      command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(rand())"]
   restartPolicy: Never
